@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import apiFetch from '../api/apiFetch';
+import StoreCard from "./StoreCard";
 
 export default function StoreList() {
     const { user } = useAuth();
@@ -12,11 +13,14 @@ export default function StoreList() {
     async function load() {
         try {
             const qs = new URLSearchParams({ qName, qAddress });
-            const res = await apiFetch('/api/stores?' + qs.toString(), { token: user.token });
+            const res = await apiFetch(`/api/stores?` + qs.toString(), { token: user.token });
             setStores(res.stores || res);
         } catch (e) { console.error(e); }
     }
-    useEffect(() => { load(); }, []);
+    useEffect(() => {
+        console.log(user);
+        load();
+    }, []);
 
 
     return (

@@ -18,6 +18,7 @@ export default function UserList() {
     }
 
     useEffect(() => {
+        console.log(user);
         load();
     }, []);
 

@@ -17,7 +17,7 @@ export default function Login() {
             // backend should return { token, user }
             login({ ...data.user, token: data.token });
             // redirect based on role
-            if (data.user.role === 'system_admin') navigate('/admin/users');
+            if (data.user.role === 'system_admin') navigate('/admin');
             else if (data.user.role === 'normal_user') navigate('/stores');
             else if (data.user.role === 'store_owner') navigate('/owner/dashboard');
         } catch (e) { setErr(e.message); }

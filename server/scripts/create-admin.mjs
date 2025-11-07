@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 dotenv.config();
 
 // usage:
-// ADMIN_NAME="System Administrator" ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD="S3cure!Pass" node scripts/create-admin.mjs
+// ADMIN_NAME="System Administrator" ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD="randompass" node scripts/create-admin.mjs
 const {
     ADMIN_NAME = 'System Administrator',
     ADMIN_EMAIL,
@@ -26,7 +26,7 @@ const pool = new Pool({
 
 (async () => {
     try {
-        // Check if email already exists
+        // Check for email already exists
         const exists = await pool.query('SELECT id, role FROM users WHERE lower(email) = lower($1)', [ADMIN_EMAIL]);
         if (exists.rows.length) {
             const row = exists.rows[0];

@@ -7,6 +7,7 @@ export default function AdminRatings() {
     const { user } = useAuth();
     const [data, setData] = useState([]);
     useEffect(() => {
+        console.log("Admin Ratings: ", user);
         (async () => {
             try { const res = await apiFetch('/api/admin/ratings', { token: user.token }); setData(res.ratings || res); } catch (e) { console.error(e); }
         })();

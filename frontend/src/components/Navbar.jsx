@@ -14,6 +14,7 @@ export default function Navbar() {
 
                 {user && user.role === 'system_admin' && (
                     <>
+                        <Link to="/admin" className="text-lg font-bold hover:text-red-400">Home</Link>
                         <Link to="/admin/users" className="text-lg font-bold hover:text-red-400">Users</Link>
                         <Link to="/admin/stores" className="text-lg font-bold hover:text-red-400">Stores</Link>
                         <Link to="/admin/ratings" className="text-lg font-bold hover:text-red-400">Ratings</Link>
@@ -29,8 +30,8 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
                 {user ? (
                     <>
-                        <span className="text-sm">{user.name} ({user.role})</span>
-                        <Link to="/settings" className="text-sm">Settings</Link>
+                        <span className="text-sm">{user.name} | ({user.role})</span>
+                        <Link to="/settings" className="text-sm">change password</Link>
                         <button onClick={doLogout} className="px-3 py-1 bg-red-500 text-white rounded">Logout</button>
                     </>
                 ) : (

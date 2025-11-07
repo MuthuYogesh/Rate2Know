@@ -1,5 +1,4 @@
 -- migrations/001_create_extensions_and_tables_neon.sql
--- Use pgcrypto for UUID generation (Neon-friendly)
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Roles as enum

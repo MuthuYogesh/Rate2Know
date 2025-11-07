@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -18,16 +18,17 @@ function App() {
     <div className="min-h-screen min-w-screen bg-gray-100">
       <Navbar />
       <Routes>
+        {/* <Route path='/' element={() => { Navigate('/login') }} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
         {/* <Route path="/" element={<PrivateRoute><HomeFallback /></PrivateRoute>} /> */}
 
         {/* Admin */}
-        <Route path="/admin" element={<PrivateRoute><AdminDashboard /></PrivateRoute>} />
-        <Route path="/admin/users" element={<AdminRoute><UserList /></AdminRoute>} />
-        <Route path="/admin/stores" element={<AdminRoute><AdminStores /></AdminRoute>} />
-        <Route path="/admin/ratings" element={<AdminRoute><AdminRatings /></AdminRoute>} />
+        <Route path="/admin" element={<PrivateRoute><AdminRoute><AdminDashboard /></AdminRoute></PrivateRoute>} />
+        <Route path="/admin/users" element={<PrivateRoute><AdminRoute><UserList /></AdminRoute></PrivateRoute>} />
+        <Route path="/admin/stores" element={<PrivateRoute><AdminRoute><AdminStores /></AdminRoute></PrivateRoute>} />
+        <Route path="/admin/ratings" element={<PrivateRoute><AdminRoute><AdminRatings /></AdminRoute></PrivateRoute>} />
 
         {/* Normal user */}
         <Route path="/stores" element={<PrivateRoute><StoreList /></PrivateRoute>} />
